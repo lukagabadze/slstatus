@@ -65,11 +65,20 @@ static const struct arg args[] = {
 	/* function format          argument */
 	//{ datetime, "%s",           "%F %T" },
 	//{ wifi_perc, "W: (%3s%% on ", "wlp8s0" },
-   	//{ netspeed_rx, "%sB/s  ", "enp0s3" },
-	{ run_command, "Volume: %4s | ", "amixer sget Master | awk -F\"[][]\" '/%/ { print $2 }' | head -n1" },
-	{ battery_perc,  "[BAT %s%% ",    "BAT0"        }, 
-	{ battery_perc,  "%s%]   ",      "BAT1"        }, 
-	{ cpu_perc,      "[CPU %s%%]  ",  NULL	      },
-	{ ram_perc,      "[RAM %s%%]  ",  NULL	      },
-	{ datetime, "%s",           "%a %b %d %r" },
+ 	//{ netspeed_rx, "%sB/s  ", "enp0s3" },
+	{ run_command,   	" Volume: %4s | ", 	"amixer sget Master | awk -F\"[][]\" '/%/ { print $2 }' | head -n1" },
+
+	{ run_command,   	"%s ", 							"echo [BAT"                                                         },
+	{ battery_state, 	"%s",      					"BAT0"                                                              }, 
+	{ battery_perc,  	"%s%% ",      			"BAT0"                                                              }, 
+
+	{ battery_state, 	"%s",      					"BAT1"                                                              }, 
+	{ battery_perc,  	"%s%]   ",         	"BAT1"                                                              }, 
+
+	{disk_used,       "%s / ",            "/home/gabo"                                                   			},
+	{disk_total,       "%s  ",            "/home/gabo"                                                   			},
+
+	{ cpu_perc,      	"[CPU %s%]  ",     NULL	                                                              	},
+	{ ram_perc,      	"[RAM %s%]  ",     NULL	                                                              	},
+	{ datetime,      	"%s",              	"%a %b %d %r"                                                       },
 };
